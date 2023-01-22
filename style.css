@@ -1,0 +1,37 @@
+.main {
+  background: #000;
+  color: aliceblue;
+  text-align: center;
+}
+.cont-team {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: red;
+}
+.indTeam {
+  margin: 1em;
+  /* width: 10%; */
+  background-color: rgb(0, 30, 255);
+  border-radius: 5px;
+  padding: 5px;
+}
+.indTeam input {
+  width: 70%;
+  border:none;
+  outline: none;
+  margin-bottom: 5px;
+}
+
+@media (max-width:375px) {
+    .cont-team {
+        flex-direction: column;
+      }
+      
+}
+@media (min-width:374px) {
+      body{
+        background: #000;
+      }
+/* .indTeam{ width: 10%;} */
+}

@@ -116,17 +116,20 @@ resetBtn.addEventListener("click",()=>{
 let count = 1;
 let countt = 0;
 addTeamBtn.addEventListener("click",function (e) {
-    
     count++;
     if(count <7){
         let newEl = document.createElement("div");
-newEl.innerHTML = `<div class="indTeam"><p>Team `+count+`</p><input class="team1Input" oninput="`+inputFunctio()+`
-" id="input`+count+`" type="number"><br>
-<button class="addscore" onclick="add('input')">+</button>
-<button class="addscore">-</button></div>`;
-rootDiv.appendChild(newEl);
-let newAddButton = newEl.querySelectorAll('inputId');
-newAddButton.addEventListener("click", add);
+        newEl.innerHTML = `<div class="indTeam"><p>Team ${count}</p><input class="team1Input" oninput="${inputFunctio()}" id="input${count}" type="number"><br>
+<button class="addscore" onclick="add('input${count}')">+</button>
+<button class="addscore" onclick="remove('input${count}')">-</button></div>`;
+        rootDiv.appendChild(newEl);
+        let newAddButton = newEl.querySelectorAll('.addscore');
+        let newRemoveButton = newEl.querySelectorAll('.removescore');
+        newAddButton.forEach(button => button.addEventListener("click", add));
+        newRemoveButton.forEach(button => button.addEventListener("click", remove));
+    }
+});
+
 
 
 

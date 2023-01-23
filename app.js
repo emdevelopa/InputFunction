@@ -5,6 +5,7 @@ const addBtn = document.querySelector(".addscore")
 const removeBtn = document.querySelector(".removescore")
 const resetBtn = document.querySelector(".reset")
 const addTeamBtn = document.querySelector(".addTeamBtn")
+const removeteambtn = document.querySelector(".removeteam")
 
 
 
@@ -107,6 +108,17 @@ resetBtn.addEventListener("click",()=>{
     setInterval(location.reload(),1000)   
 })
 
+//remove a team
+function removeteam(inputId) {
+    document.getElementsById(inputId)
+    removeteambtn.addEventListener("click", function(e){
+        x = e.target.parentNode
+        console.log(x);
+        x.remove()
+    })
+}
+removeteam();
+
 
 
 // newAddButton.addEventListener("click", () => add(newAddButton.previousElementSibling.id));
@@ -121,14 +133,19 @@ addTeamBtn.addEventListener("click",function (e) {
         let newEl = document.createElement("div");
         newEl.innerHTML = `<div class="indTeam"><p>Team ${count}</p><input class="team1Input" oninput="${inputFunctio()}" id="input${count}" type="number"><br>
 <button class="addscore" onclick="add('input${count}')">+</button>
-<button class="addscore" onclick="remove('input${count}')">-</button></div>`;
+<button class="addscore" onclick="remove('input${count}')">-</button>
+<button class="removeteam">x</button>
+</div>`;
         rootDiv.appendChild(newEl);
         let newAddButton = newEl.querySelectorAll('.addscore');
         let newRemoveButton = newEl.querySelectorAll('.removescore');
+        let newRemoveTeamButton = newE1.querySelectorAll('.removeteam')
         newAddButton.forEach(button => button.addEventListener("click", add));
         newRemoveButton.forEach(button => button.addEventListener("click", remove));
+        newRemoveTeamButton.forEach(button =>button.addEventListener("click", removeteam));
     }
 });
+
 
 
 

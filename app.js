@@ -1,9 +1,14 @@
-const inputEl = document.querySelector(".team1Input")
+const inputE1 = document.querySelector(".team1Input")
 const rootDiv = document.querySelector(".cont-team")
 const sy = rootDiv.querySelectorAll(".indTeam")
 const addBtn = document.querySelector(".addscore")
 const resetBtn = document.querySelector(".reset")
 const addTeamBtn = document.querySelector(".addTeamBtn")
+
+
+
+
+// const inputEl= parseInt(teamnuber)
 
 console.log(sy)
 function inputFunctio() {
@@ -39,6 +44,20 @@ function foo() {
     }
 }
 
+function add() {
+    x = document.getElementById('input')
+    if(x.value === ""){
+        x.value = 100;
+    } else {
+        let currentValue = parseInt(x.value);
+        x.value = currentValue + 100;
+    }
+    inputFunctio()
+}
+
+
+
+
 // Input Evenetlistener
 // sy.addEventListener("input",foo)
 
@@ -54,18 +73,36 @@ window.onload = function r(){
     
 }
 
+
+
 // Add button eventlistener function
-addBtn.addEventListener("click",()=>{
-    inputEl.value++
-    b = foo();
-    b?.savetolocal(t);
-})
+// addBtn.addEventListener("click",()=>{
+//     inputEl.value+=100
+//     b = foo();
+//     b?.savetolocal(t);
+// })
+
+
+// function add(){
+//     addBtn.addEventListener("click",()=>{
+//             inputEl.value+=100
+//             b = foo();
+//             b?.savetolocal(t)    
+// })
+// }
+
+
+
 
 // Reset Button Function
 resetBtn.addEventListener("click",()=>{
     localStorage.clear()
     setInterval(location.reload(),1000)   
 })
+
+
+
+
 
 // Add Team button function
 let count = 1;
@@ -74,8 +111,14 @@ addTeamBtn.addEventListener("click",function (e) {
     
     count++;
     if(count <7){
-        let newelm = `<div class="indTeam"><p>Team `+count+` </p><input class="team1Input" oninput="`+inputFunctio()+`" type="number"><br><button class="addscore">+</button><button class="addscore">-</button></div>`;
-        rootDiv.innerHTML += newelm;
+        let newEl = document.createElement("div");
+newEl.innerHTML = `<div class="indTeam"><p>Team `+count+`</p><input class="team1Input" oninput="`+inputFunctio()+`" type="number"><br><button class="addscore">+</button><button class="addscore">-</button></div>`;
+rootDiv.appendChild(newEl);
+let addButtons = newEl.querySelectorAll('.addscore');
+addButtons.forEach(button => button.addEventListener("click", add));
+
+
+        return (JSON.parse(localStorage.getItem(localStorageKey)))
     }
     
 });

@@ -5,6 +5,7 @@ const addBtn = document.querySelector(".addscore")
 const removeBtn = document.querySelector(".removescore")
 const resetBtn = document.querySelector(".reset")
 const addTeamBtn = document.querySelector(".addTeamBtn")
+const removeteambtn = document.querySelector(".removeteam")
 
 
 
@@ -107,9 +108,12 @@ resetBtn.addEventListener("click",()=>{
     setInterval(location.reload(),1000)   
 })
 
+// remove a team
 
-
-// newAddButton.addEventListener("click", () => add(newAddButton.previousElementSibling.id));
+function removeteam(inputId) {
+    let x = document.getElementById(inputId)
+    x.parentNode.remove();
+}
 
 
 // Add Team button function
@@ -119,16 +123,23 @@ addTeamBtn.addEventListener("click",function (e) {
     count++;
     if(count <7){
         let newEl = document.createElement("div");
-        newEl.innerHTML = `<div class="indTeam"><p>Team ${count}</p><input class="team1Input" oninput="${inputFunctio()}" id="input${count}" type="number"><br>
-<button class="addscore" onclick="add('input${count}')">+</button>
-<button class="addscore" onclick="remove('input${count}')">-</button></div>`;
+        newEl.innerHTML = `<div class="indTeam"><p>Team ${count}</p><input class="team1Input"
+         oninput="${inputFunctio()}" id="input${count}" type="number"><br>
+        <button class="addscore" onclick="add('input${count}')">+</button>
+        <button class="addscore" onclick="remove('input${count}')">-</button>
+        <button class="removeteam"  onclick=removeteam("input${count}")
+         id="input${count}">x</button> </div>`;
         rootDiv.appendChild(newEl);
         let newAddButton = newEl.querySelectorAll('.addscore');
         let newRemoveButton = newEl.querySelectorAll('.removescore');
+        let newRemoveTeamButton = newEl.querySelectorAll('.removeteam')
         newAddButton.forEach(button => button.addEventListener("click", add));
         newRemoveButton.forEach(button => button.addEventListener("click", remove));
+        newRemoveTeamButton.forEach(button => button.addEventListener("click", removeteam));
+
     }
 });
+
 
 
 // });

@@ -130,14 +130,10 @@ addTeamBtn.addEventListener("click",function (e) {
     }
 });
 
-
-
-
-
         return (JSON.parse(localStorage.getItem(localStorageKey)))
-    }
-    
-});
+    // }
+    // 
+// });
 // function storeElementCount(res){
 //     if(res <7){
 //         localStorage.setItem('storedCount',res);

@@ -79,7 +79,7 @@ window.abc = function (localStorageKey = "todo") {
 // Window loads, gets and sets value on the input 
 window.onload = function r(){
     let r = window.parent.abc()
-    inputEl.value = r?.TeamOne;
+    // inputEl.value = r?.TeamOne;
     
 }
 

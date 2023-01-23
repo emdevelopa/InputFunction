@@ -5,6 +5,11 @@ const addBtn = document.querySelector(".addscore")
 const resetBtn = document.querySelector(".reset")
 const addTeamBtn = document.querySelector(".addTeamBtn")
 
+
+
+
+// const inputEl= parseInt(teamnuber)
+
 console.log(sy)
 function inputFunctio() {
     console.log("hello");
@@ -54,7 +59,7 @@ function add() {
 
 
 // Input Evenetlistener
-inputEl.addEventListener("input",foo)
+// sy.addEventListener("input",foo)
 
 // Window get value funtiion from local storage
 window.abc = function (localStorageKey = "todo") {
@@ -104,13 +109,18 @@ let count = 1;
 let countt = 0;
 addTeamBtn.addEventListener("click",function (e) {
     
-    
     count++;
     if(count <7){
-        let newelm = `<div class="indTeam"><p>Team `+count+` </p><input class="team1Input" oninput="`+inputFunctio()+`" type="number"><br><button class="addscore">+</button><button class="addscore">-</button></div>`;
-        rootDiv.innerHTML += newelm;
-    }
+        let newEl = document.createElement("div");
+newEl.innerHTML = `<div class="indTeam"><p>Team `+count+`</p><input class="team1Input" oninput="`+inputFunctio()+`" type="number"><br><button class="addscore">+</button><button class="addscore">-</button></div>`;
+rootDiv.appendChild(newEl);
+let addButtons = newEl.querySelectorAll('.addscore');
+addButtons.forEach(button => button.addEventListener("click", add));
 
+
+        return (JSON.parse(localStorage.getItem(localStorageKey)))
+    }
+    
 });
 // function storeElementCount(res){
 //     if(res <7){

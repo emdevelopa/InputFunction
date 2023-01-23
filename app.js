@@ -4,26 +4,7 @@ const sy = rootDiv.querySelectorAll(".indTeam")
 const addBtn = document.querySelector(".addscore")
 const resetBtn = document.querySelector(".reset")
 const addTeamBtn = document.querySelector(".addTeamBtn")
-
-console.log(sy)
-function inputFunctio() {
-    console.log("hello");
-    function foo() {
-        let todo = sy.value;
-        savetolocal(todo)
-        function savetolocal(todo){
-            let todos;
-            todos = {
-                "TeamOne": todo,
-            }
-           
-            todos.TeamOne = todo;
-            localStorage.setItem("todo",JSON.stringify(todos)); 
-            
-        }
-    }
-}
-
+console.log(sy);
 function foo() {
     let todo = inputEl.value;
     savetolocal(todo)
@@ -40,7 +21,7 @@ function foo() {
 }
 
 // Input Evenetlistener
-// sy.addEventListener("input",foo)
+inputEl.addEventListener("input",foo)
 
 // Window get value funtiion from local storage
 window.abc = function (localStorageKey = "todo") {
@@ -72,12 +53,13 @@ let count = 1;
 let countt = 0;
 addTeamBtn.addEventListener("click",function (e) {
     
+    
     count++;
     if(count <7){
-        let newelm = `<div class="indTeam"><p>Team `+count+` </p><input class="team1Input" oninput="`+inputFunctio()+`" type="number"><br><button class="addscore">+</button><button class="addscore">-</button></div>`;
+        let newelm = `<div class="indTeam"><p>Team `+count+` </p><input class="team1Input" type="number"><br><button class="addscore">+</button><button class="addscore">-</button></div>`;
         rootDiv.innerHTML += newelm;
     }
-    
+
 });
 // function storeElementCount(res){
 //     if(res <7){
